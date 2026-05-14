@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FuturISMO | Lo que viene después</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Sora:wght@300;400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Google AdSense - REEMPLAZA ESTOS DATOS CON LOS TUYOS -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-TU_CODIGO_AQUI" crossorigin="anonymous"></script>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary-cyan: #00ffc8; --primary-orange: #ff6b35; --primary-gold: #d4af37; --bg-dark: #0a0a12; }
+        body { font-family: 'Rajdhani', sans-serif; background: var(--bg-dark); color: #fff; min-height: 100vh; overflow-x: hidden; }
+        
+        /* ========== NAVIGATION ========== */
+        .nav { position: fixed; top: 0; left: 0; width: 100%; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, transparent 100%); backdrop-filter: blur(10px); }
+        .logo { font-family: 'Orbitron', sans-serif; font-size: 1.2rem; font-weight: 700; letter-spacing: 3px; }
+        .logo-ozempic { color: var(--primary-cyan); }
+        .logo-ai { color: var(--primary-orange); }
+        .logo-eutanasia { color: var(--primary-gold); }
+        .nav-buttons { display: flex; gap: 10px; }
+        .nav-btn { padding: 10px 20px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.7); font-family: 'Space Mono', monospace; font-size: 0.75rem; cursor: pointer; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px; }
+        .nav-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
+        .nav-btn.active-ozempic { border-color: var(--primary-cyan); color: var(--primary-cyan); box-shadow: 0 0 20px rgba(0,255,200,0.3); }
+        .nav-btn.active-ai { border-color: var(--primary-orange); color: var(--primary-orange); box-shadow: 0 0 20px rgba(255,107,53,0.3); }
+        .nav-btn.active-eutanasia { border-color: var(--primary-gold); color: var(--primary-gold); box-shadow: 0 0 20px rgba(212,175,55,0.3); }
+        
+        /* Sections */
+        .section { display: none; min-height: 100vh; }
+        .section.active { display: block; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        
+        /* ========== OZEMPIC THEME ========== */
+        .ozempic-section { background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 50%, #0d0d2b 100%); background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=3840&q=80'); background-size: cover; background-position: center; background-attachment: fixed; }
+        .ozempic-section .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(5,5,20,0.75) 0%, rgba(10,10,40,0.6) 50%, rgba(5,5,20,0.85) 100%); z-index: -1; }
+        .ozempic-section .tag { background: linear-gradient(90deg, rgba(0,255,200,0.2), rgba(0,200,255,0.2)); border-color: rgba(0,255,200,0.4); color: var(--primary-cyan); }
+        .ozempic-section h1 { background: linear-gradient(135deg, #00ffc8 0%, #00d4ff 50%, #7b2cbf 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .ozempic-section .card { background: linear-gradient(135deg, rgba(20,20,50,0.6) 0%, rgba(30,30,70,0.4) 100%); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); }
+        .ozempic-section .card h2 { color: var(--primary-cyan); }
+        .ozempic-section .card h2::before { background: var(--primary-cyan); box-shadow: 0 0 15px var(--primary-cyan); }
+        .ozempic-section .highlight { color: #00d4ff; }
+        .ozempic-section .stat { background: linear-gradient(135deg, rgba(0,255,200,0.1), rgba(0,200,255,0.05)); border: 1px solid rgba(0,255,200,0.3); }
+        .ozempic-section .stat-number { color: var(--primary-cyan); }
+        .ozempic-section .quote { border-left: 4px solid var(--primary-cyan); background: linear-gradient(90deg, rgba(0,255,200,0.1), transparent); }
+        
+        /* ========== AI THEME ========== */
+        .ai-section { background: linear-gradient(135deg, #0d0805 0%, #1a0f08 50%, #0a0503 100%); background-image: url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=3840&q=80'); background-size: cover; background-position: center; background-attachment: fixed; }
+        .ai-section .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(20,10,5,0.8) 0%, rgba(30,15,8,0.7) 50%, rgba(15,8,3,0.9) 100%); z-index: -1; }
+        .ai-section .container { max-width: 900px; }
+        .ai-section .tag { background: linear-gradient(90deg, rgba(255,107,53,0.2), rgba(255,150,50,0.2)); border-color: rgba(255,107,53,0.4); color: var(--primary-orange); }
+        .ai-section h1 { font-family: 'Sora', sans-serif; background: linear-gradient(135deg, #ff6b35 0%, #ff9f1c 50%, #ff4500 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-transform: uppercase; letter-spacing: 2px; }
+        .ai-section .card { background: linear-gradient(135deg, rgba(40,20,10,0.7) 0%, rgba(30,15,8,0.5) 100%); backdrop-filter: blur(15px); border: 1px solid rgba(255,107,53,0.15); border-radius: 5px; position: relative; }
+        .ai-section .card::before { content: '>'; position: absolute; top: 15px; left: 20px; font-family: 'Space Mono', monospace; color: var(--primary-orange); font-size: 1.5rem; opacity: 0.5; }
+        .ai-section .card h2 { font-family: 'Sora', sans-serif; color: var(--primary-orange); font-weight: 600; margin-bottom: 15px; padding-left: 30px; }
+        .ai-section .highlight { color: #ff9f1c; }
+        .ai-section .warning { background: linear-gradient(135deg, rgba(255,69,0,0.2), rgba(255,50,0,0.1)); border: 1px solid rgba(255,69,0,0.4); border-left: 4px solid #ff4500; }
+        .ai-section .stat { background: linear-gradient(135deg, rgba(255,107,53,0.15), rgba(255,150,50,0.05)); border: 1px solid rgba(255,107,53,0.3); }
+        .ai-section .stat-number { color: var(--primary-orange); font-family: 'Space Mono', monospace; }
+        
+        /* ========== EUTANASIA THEME ========== */
+        .eutanasia-section { background: linear-gradient(135deg, #0f0d08 0%, #1a1812 50%, #080604 100%); background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=3840&q=80'); background-size: cover; background-position: center; background-attachment: fixed; }
+        .eutanasia-section .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(15,13,8,0.85) 0%, rgba(25,22,15,0.7) 50%, rgba(10,9,5,0.9) 100%); z-index: -1; }
+        .eutanasia-section .container { max-width: 850px; }
+        .eutanasia-section .tag { background: linear-gradient(90deg, rgba(212,175,55,0.15), rgba(255,215,0,0.1)); border-color: rgba(212,175,55,0.3); color: var(--primary-gold); font-family: 'Cormorant Garamond', serif; font-style: italic; letter-spacing: 4px; }
+        .eutanasia-section h1 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(2rem,5vw,3.2rem); background: linear-gradient(135deg, #d4af37 0%, #f5d98e 50%, #c9a227 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-style: italic; letter-spacing: 3px; }
+        .eutanasia-section .card { background: linear-gradient(135deg, rgba(30,25,15,0.6) 0%, rgba(20,17,10,0.4) 100%); backdrop-filter: blur(25px); border: 1px solid rgba(212,175,55,0.15); border-radius: 3px; padding: 45px; }
+        .eutanasia-section .card h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: var(--primary-gold); font-weight: 600; font-style: italic; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 15px; margin-bottom: 25px; }
+        .eutanasia-section p { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; line-height: 1.9; color: rgba(255,245,230,0.85); }
+        .eutanasia-section .highlight { color: #f5d98e; }
+        .eutanasia-section .quote { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.2rem; border-left: 3px solid var(--primary-gold); background: linear-gradient(90deg, rgba(212,175,55,0.1), transparent); color: rgba(255,245,230,0.9); }
+        .eutanasia-section .columns { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 30px 0; }
+        .pro, .contra { padding: 25px; border-radius: 3px; }
+        .pro { background: linear-gradient(135deg, rgba(0,100,50,0.2), rgba(0,80,40,0.1)); border: 1px solid rgba(0,180,100,0.3); }
+        .contra { background: linear-gradient(135deg, rgba(100,30,30,0.2), rgba(80,20,20,0.1)); border: 1px solid rgba(180,80,80,0.3); }
+        .pro h3, .contra h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; margin-bottom: 15px; font-style: italic; }
+        .pro h3 { color: #00c853; }
+        .contra h3 { color: #ef5350; }
+        
+        /* Shared Styles */
+        .container { margin: 0 auto; padding: 80px 20px 60px; }
+        .header { text-align: center; margin-bottom: 50px; animation: fadeInDown 1s ease-out; }
+        .tag { display: inline-block; padding: 8px 20px; border: 1px solid; border-radius: 30px; font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; backdrop-filter: blur(10px); }
+        h1 { font-family: 'Orbitron', sans-serif; font-size: clamp(1.8rem,5vw,3rem); font-weight: 900; margin-bottom: 15px; text-shadow: 0 0 40px rgba(0,255,200,0.2); line-height: 1.2; }
+        .subtitle { font-size: 1.2rem; color: rgba(255,255,255,0.6); font-weight: 300; }
+        .card { padding: 35px; margin-bottom: 25px; box-shadow: 0 8px 32px rgba(0,0,0,0.3); animation: fadeInUp 1s ease-out; animation-fill-mode: both; }
+        .card:nth-child(1) { animation-delay: 0.15s; }
+        .card:nth-child(2) { animation-delay: 0.3s; }
+        .card:nth-child(3) { animation-delay: 0.45s; }
+        .card:nth-child(4) { animation-delay: 0.6s; }
+        .card:nth-child(5) { animation-delay: 0.75s; }
+        .card:nth-child(6) { animation-delay: 0.9s; }
+        .card p { font-size: 1.05rem; line-height: 1.8; }
+        .highlight { font-weight: 600; }
+        .stat-box { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px,1fr)); gap: 15px; margin: 20px 0; }
+        .stat { padding: 18px 15px; border-radius: 8px; text-align: center; backdrop-filter: blur(10px); }
+        .stat-number { font-size: 1.8rem; font-weight: 700; }
+        .stat-label { font-size: 0.75rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; }
+        .quote { font-style: italic; padding: 20px 25px; margin: 25px 0; border-radius: 0 12px 12px 0; }
+        .warning { padding: 25px; border-radius: 8px; margin: 20px 0; }
+        .warning-title { font-family: 'Orbitron', sans-serif; font-size: 0.9rem; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; color: #ff6b6b; }
+        .warning p { font-size: 1rem; }
+        
+        /* Imágenes */
+        .image-container { width: 100%; height: 250px; border-radius: 12px; overflow: hidden; margin: 25px 0; position: relative; }
+        .image-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .image-container:hover img { transform: scale(1.05); }
+        .image-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 15px 20px; background: linear-gradient(transparent, rgba(0,0,0,0.8)); font-size: 0.85rem; color: rgba(255,255,255,0.8); }
+        
+        /* Fuentes */
+        .sources { margin-top: 30px; padding: 20px; background: rgba(0,0,0,0.4); border-radius: 10px; font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+        .sources h4 { color: rgba(255,255,255,0.8); margin-bottom: 10px; font-family: 'Space Mono', monospace; }
+        .sources a { color: var(--primary-cyan); text-decoration: none; }
+        .ai-section .sources a { color: var(--primary-orange); }
+        .eutanasia-section .sources a { color: var(--primary-gold); }
+        
+        /* Footer */
+        .footer { text-align: center; margin-top: 40px; padding: 30px; }
+        .footer-text { font-size: 0.8rem; color: rgba(255,255,255,0.4); letter-spacing: 2px; }
+        
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* Scroll indicator */
+        .scroll-indicator { position: fixed; bottom: 25px; right: 25px; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(10px); transition: all 0.3s ease; z-index: 100; }
+        .ozempic-section .scroll-indicator { background: rgba(0,255,200,0.15); border: 1px solid rgba(0,255,200,0.4); }
+        .ozempic-section .scroll-indicator::after { content: '↑'; color: #00ffc8; font-size: 1.3rem; }
+        .ai-section .scroll-indicator { background: rgba(255,107,53,0.15); border: 1px solid rgba(255,107,53,0.4); }
+        .ai-section .scroll-indicator::after { content: '↑'; color: #ff6b35; font-size: 1.3rem; }
+        .eutanasia-section .scroll-indicator { background: rgba(212,175,55,0.15); border: 1px solid rgba(212,175,55,0.4); }
+        .eutanasia-section .scroll-indicator::after { content: '↑'; color: #d4af37; font-size: 1.3rem; }
+        .scroll-indicator:hover { transform: translateY(-5px); }
+        
+        /* AdSense */
+        .adsbygoogle { margin: 20px 0; min-height: 90px; border-radius: 10px; overflow: hidden; }
+        .ozempic-section .adsbygoogle { background: rgba(0,255,200,0.08); border: 1px solid rgba(0,255,200,0.2); }
+        .ai-section .adsbygoogle { background: rgba(255,107,53,0.08); border: 1px solid rgba(255,107,53,0.2); }
+        .eutanasia-section .adsbygoogle { background: rgba(212,175,55,0.08); border: 1px solid rgba(212,175,55,0.2); }
+        
+        @media (max-width: 768px) { .container { padding: 70px 15px 40px; } .card { padding: 25px; } .nav { padding: 10px 15px; } .nav-btn { padding: 8px 12px; font-size: 0.65rem; } .columns { grid-template-columns: 1fr !important; } }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav class="nav">
+        <div class="logo" id="logoText">FUTURISMO</div>
+        <div class="nav-buttons">
+            <button class="nav-btn active-ozempic" onclick="showSection('ozempic')">Ozempic</button>
+            <button class="nav-btn" onclick="showSection('ai')">IA & Trabajo</button>
+            <button class="nav-btn" onclick="showSection('eutanasia')">Eutanasia</button>
+        </div>
+    </nav>
+
+    <!-- OZEMPIC SECTION -->
+    <section class="section ozempic-section active" id="ozempic">
+        <div class="overlay"></div>
+        <div class="container">
+            <!-- ANUNCIO GOOGLE ADSENSE - REEMPLAZA data-ad-client Y data-ad-slot CON TUS DATOS -->
+            <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-client="ca-pub-TU_CODIGO" data-ad-slot="TU_SLOT" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            
+            <header class="header">
+                <div class="tag">Documento del Futuro • 2026</div>
+                <h1>LA REVOLUCIÓN DE LOS "JUEGOS DE OZEMPIC"</h1>
+                <p class="subtitle">El fenómeno que está transformando la humanidad a nivel molecular</p>
+            </header>
+
+            <div class="card">
+                <h2>El Medicamento que Cambió Todo</h2>
+                <p>Era 2026 y algo extraordinario estaba ocurriendo en las consultas médicas de todo el mundo. <span class="highlight">Ozempic</span>, un medicamento diseñado originalmente para tratar la diabetes tipo 2, se había convertido en el fenómeno más revolucionario —y controvertido— del siglo XXI. No era un arma cualquiera: era la primera herramienta capaz de reprogramar el apetito humano a nivel neurológico.</p>
+            </div>
+
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=1200&q=80" alt="Medicamentos">
+                <div class="image-caption">Las nuevas tecnologías médicas están redefiniendo los límites de lo posible</div>
+            </div>
+
+            <div class="card">
+                <h2>Los Números que Asustan</h2>
+                <div class="stat-box">
+                    <div class="stat"><div class="stat-number">$150B</div><div class="stat-label">Mercado 2030</div></div>
+                    <div class="stat"><div class="stat-number">24M</div><div class="stat-label">Usuarios USA</div></div>
+                    <div class="stat"><div class="stat-number">7M</div><div class="stat-label">Obesidad España</div></div>
+                    <div class="stat"><div class="stat-number">€450</div><div class="stat-label">Costo mensual</div></div>
+                </div>
+                <p>Los análisis predictivos indican que para 2035, el <span class="highlight">7% de la población estadounidense</span> consumirá estos fármacos.</p>
+            </div>
+
+            <div class="card">
+                <h2>🌟 Dato Curioso: El Secreto de Hollywood</h2>
+                <p><span class="highlight">Kim Kardashian</span> se inyectó Ozempic para embutirse en el vestido de Marilyn Monroe en la Met Gala 2022, bajando 7 kilos en semanas. Pero no está sola:</p>
+                <p style="margin-top:10px">• <span class="highlight">Elon Musk</span> reveló usar Wegovy (versión de Ozempic)</p>
+                <p>• <span class="highlight">Oprah Winfrey</span>: "Es un alivio, como un regalo"</p>
+                <p>• <span class="highlight">Robbie Williams</span> advirtió que perdió visión por usarlos</p>
+                <p>• <span class="highlight">Sharon Osbourne</span> perdió 20 kilos y admitió: "Estoy demacrada"</p>
+            </div>
+
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&q=80" alt="Estetoscopio médico">
+                <div class="image-caption">La industria farmacéutica vive su momento más disruptivo</div>
+            </div>
+
+            <div class="card">
+                <div class="warning">
+                    <div class="warning-title">⚠ ALERTA CRÍTICA - puede causar CEGUERA</div>
+                    <p><strong>Mounjaro/FDA advertencia de caja negra:</strong> Riesgo de tumores. Pero hay más.</p>
+                    <p style="margin-top:10px">Un estudio de 2024 en <span class="highlight">JAMA Ophthalmology</span> encontró que los usuarios de semaglutida tienen <span class="highlight">7 veces más riesgo</span> de NAION (Neuropatía Óptica), que puede causar ceguera permanente. La EMA reconoció oficialmente en 2025 este efecto secundario.</p>
+                    <p style="margin-top:10px">Otros efectos: náuseas, vómitos, pancreatitis, gastroparesia, "boca Ozempic" (sequedad bucal).</p>
+                </div>
+                <p>La OMS recomienda estos medicamentos solo para adultos con IMC ≥30 kg/m². El efecto rebote está demostrado: al interrumpir, la mayoría recupera el peso.</p>
+            </div>
+
+            <div class="card">
+                <h2>El Futuro que Nos Espera</h2>
+                <p>Lo que Coachella anticipa es la normalización de un cuerpo posnatural: un cuerpo cuyo aspecto, apetito y metabolismo serán gestionados farmacológicamente desde la juventud. <span class="highlight">La pregunta que nadie quiere responder:</span> ¿Qué pasa con quienes no pueden pagarlo? ¿Se convertirán en los nuevos "desviados" de una norma que se habrá disfrazado de salud?</p>
+            </div>
+            
+            <div class="sources">
+                <h4>📚 FUENTES:</h4>
+                <p>• La Razón - "Famosos que confesaron usar Ozempic" (2024)</p>
+                <p>• Ámbito - "Ozempic, la droga que toman los famosos"</p>
+                <p>• JAMA Ophthalmology - Estudio sobre riesgo de ceguera (2024)</p>
+                <p>• Agencia Europea de Medicamentos (EMA) - Efectos secundarios (2025)</p>
+                <p>• DW - "Los desconocidos riesgos del Ozempic"</p>
+                <p>• Cadena SER - "La era post-Ozempic" (2026)</p>
+            </div>
+
+            <footer class="footer"><p class="footer-text">DOCUMENTO GENERADO EN 2026 • PROYECCIÓN CONFIDENCIAL</p></footer>
+        </div>
+        <div class="scroll-indicator" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"></div>
+    </section>
+
+    <!-- AI SECTION -->
+    <section class="section ai-section" id="ai">
+        <div class="overlay"></div>
+        <div class="container">
+            <!-- ANUNCIO GOOGLE ADSENSE -->
+            <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-client="ca-pub-TU_CODIGO" data-ad-slot="TU_SLOT" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            
+            <header class="header">
+                <div class="tag">Sistema de Predicción 2026</div>
+                <h1>Inteligencia Artificial: El Fin del Trabajo</h1>
+                <p class="subtitle">La mayor restructuración económica de la historia humana ya comenzó</p>
+            </header>
+
+            <div class="card">
+                <h2>El Panorama Actual</h2>
+                <p>La IA concentra inversiones millonarias, pero existe el peligro de una burbuja. <span class="highlight">The Economist</span> advierte: "La IA transformará cada aspecto de la economía global antes de 2030."</p>
+                <p style="margin-top:15px">Según McKinsey, el <span class="highlight">60% de las horas trabajadas en España</span> podrían ser realizadas por robots o algoritmos. En Estados Unidos, el porcentaje se duplicó del 30% al 60% en solo 4 años.</p>
+            </div>
+
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1200&q=80" alt="Robot AI">
+                <div class="image-caption">Los robots ya no son ciencia ficción - son tu próximo compañero de oficina</div>
+            </div>
+
+            <div class="card">
+                <h2>🌟 Dato Curioso: El Empleo "New-Collar"</h2>
+                <p>Contrario a lo que muchos creen, según <span class="highlight">LinkedIn</span> (2026):</p>
+                <p style="margin-top:10px">• La IA ha <span class="highlight">creado 1.3 millones de empleos</span> en 2 años</p>
+                <p>• El puesto de Ingeniero de IA es uno de los de <span class="highlight">más rápido crecimiento</span></p>
+                <p>• 600,000 nuevos puestos en centros de datos habilitadas por IA</p>
+                <p>• En España, las ofertas que piden "fluidez en IA" se multiplicaron por <span class="highlight">4.4</span> desde 2023</p>
+                <p style="margin-top:10px">Pero... el 53% de empleados estadounidenses planea aprender habilidades de IA en los próximos 6 meses.</p>
+            </div>
+
+            <div class="card">
+                <h2>Empleos en Peligro</h2>
+                <div class="stat-box">
+                    <div class="stat"><div class="stat-number">60%</div><div class="stat-label">Horas automatizables</div></div>
+                    <div class="stat"><div class="stat-number">170M</div><div class="stat-label">Empleos nuevos 2030</div></div>
+                    <div class="stat"><div class="stat-number">92M</div><div class="stat-label">Empleos desplazados</div></div>
+                    <div class="stat"><div class="stat-number">-14%</div><div class="stat-label">Tasa empleo IA</div></div>
+                </div>
+                <p>Las tareas cognitivas rutinarias serán las primeras en desaparecer: contabilidad, atención al cliente, análisis de datos, programación básica, traducción, periodismo. <span class="highlight">El World Economic Forum</span> estima que para 2030, el 22% de los empleos actuales cambiarán significativamente.</p>
+            </div>
+
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=1200&q=80" alt="Tecnología futura">
+                <div class="image-caption">La fusión humano-máquina es el futuro del trabajo</div>
+            </div>
+
+            <div class="card">
+                <div class="warning">
+                    <div class="warning-title">⚠ PROYECCIÓN DE RIESGO</div>
+                    <p>El FMI advierte: las transformaciones tecnológicas pueden generar beneficios económicos, pero <span class="highlight">no siempre se distribuyen equitativamente</span>. Principales riesgos: polarización salarial, desplazamiento de trabajadores administrativos, brecha digital.</p>
+                    <p style="margin-top:10px">El modelo emergente no es la sustitución total, sino equipos híbridos humano-máquina: la IA automatiza tareas repetitivas, los humanos toman decisiones complejas.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Las Profesiones del Futuro</h2>
+                <p>Las habilidades más demandadas en 2030 no existían en 2020:</p>
+                <p style="margin-top:15px"><span class="highlight">• Ingenieros de empatía artificial</span> - Diseñan interacciones humano-máquina</p>
+                <p><span class="highlight">• Arquitectos de realidad aumentada</span> - Crean mundos virtuales habitables</p>
+                <p><span class="highlight">• Éticos de IA</span> - Definen los límites morales de la tecnología</p>
+                <p><span class="highlight">• Curadores de datos</span> - Deciden qué información es relevante</p>
+                <p><span class="highlight">• Especialistas en reskilling</span> - Reentrenan trabajadores desplazados</p>
+            </div>
+
+            <div class="card">
+                <h2>La Pregunta del Millón</h2>
+                <p>¿Qué hacer cuando el trabajo que define nuestra identidad, estructura social y propósito simplemente... desaparece? No es una pregunta del futuro. Es una pregunta de <span class="highlight">ahora mismo</span>. Y la respuesta determinará si la IA es nuestra mayor herramienta o nuestra perdición.</p>
+            </div>
+            
+            <div class="sources">
+                <h4>📚 FUENTES:</h4>
+                <p>• World Economic Forum - Future of Jobs Report 2026</p>
+                <p>• McKinsey - "60% de horas automatizables en España" (2026)</p>
+                <p>• LinkedIn - "1.3 millones de empleos creados por IA" (2026)</p>
+                <p>• Expansión - "El 60% de los empleos se transforma por la IA"</p>
+                <p>• FMI - Informes sobre impacto tecnológico (2026)</p>
+                <p>• OECD - Estudios sobre mercado laboral</p>
+            </div>
+
+            <footer class="footer"><p class="footer-text">PREDICCIÓN GENERADA POR ALGORITMOS • 2026</p></footer>
+        </div>
+        <div class="scroll-indicator" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"></div>
+    </section>
+
+    <!-- EUTANASIA SECTION -->
+    <section class="section eutanasia-section" id="eutanasia">
+        <div class="overlay"></div>
+        <div class="container">
+            <!-- ANUNCIO GOOGLE ADSENSE -->
+            <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-client="ca-pub-TU_CODIGO" data-ad-slot="TU_SLOT" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            
+            <header class="header">
+                <div class="tag">Debate Público • 2026</div>
+                <h1>El Derecho a Morir con Dignidad</h1>
+                <p class="subtitle">Cuando la muerte se convierte en la última decisión personal</p>
+            </header>
+
+            <div class="card">
+                <h2>La Llamada "Ley Trasciende" en México</h2>
+                <p>La eutanasia ha cruzado fronteras y ahora sacude a América Latina. La Diputada Patricia Mercado impulsa en el Palacio Legislativo de San Lázaro una propuesta para dar a los mexicanos el derecho a elegir una muerte digna. La presidenta Claudia Sheinbaum admitió: <span class="highlight">"Es un tema complejo que debe discutirse socialmente."</span></p>
+                <p style="margin-top:15px">En Europa, países como Bélgica, Países Bajos y España ya permiten la eutanasia bajo criterios estrictos.</p>
+            </div>
+
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80" alt="Paz Serenidad">
+                <div class="image-caption">La serenidad del último viaje: un debate que divide al mundo</div>
+            </div>
+
+            <div class="card">
+                <h2>🌟 Dato Curioso: El Caso Bélgica</h2>
+                <p>Bélgica se convirtió en 2002 en el primer país del mundo en legalize la eutanasia sin restricciones de edad. En 2024, registró un <span class="highlight">aumento del 15%</span> en solicitudes.</p>
+                <p style="margin-top:10px">Lo más controvertido: en 2025, un tribunal demócratic belge permitió la eutanasia para un preso convicted de asesinato que argumentaba "sufrimiento psychological irreparable". El debate se intensifyó.</p>
+                <p>En Países Bajos, más de <span class="highlight">6,000 personas</span> deciden terminar su vida anualmente de manera legal.</p>
+            </div>
+
+            <div class="card">
+                <h2>El Argumento a Favor y En Contra</h2>
+                <div class="columns">
+                    <div class="pro">
+                        <h3>A Favor</h3>
+                        <p>• Derecho fundamental a decidir el final</p>
+                        <p>• Evitar sufrimiento insoportable</p>
+                        <p>• Calidad de vida sobre cantidad</p>
+                        <p>• Control sobre el propio cuerpo</p>
+                        <p>• Marco legal evita prácticas clandestinas</p>
+                    </div>
+                    <div class="contra">
+                        <h3>En Contra</h3>
+                        <p>• Santidad inviolable de la vida</p>
+                        <p>• Riesgo de "pendiente resbaladiza"</p>
+                        <p>• Conflicto con juramento hipocrático</p>
+                        <p>• Principios éticos y religiosos</p>
+                        <p>• Alternativas: cuidados paliativos</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>El Caso de la Salud Mental</h2>
+                <p>Uno de los debates más complejos involucra a personas con trastornos mentales. El investigador Sergio Ramos Pozón de la Universidad de Barcelona analizó 42 publicaciones y concluye: <span class="highlight">"El sufrimiento mental puede ser tan incapacitante como el físico."</span></p>
+                <p style="margin-top:15px">La creencia de que quienes padecen enfermedades mentales no pueden tomar decisiones autónomas resulta simplista. Se han documentado casos donde personas con depresión, esquizofrenia o demencia han tomado resoluciones autónomas sobre su vida.</p>
+            </div>
+
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1200&q=80" alt="Reflexión">
+                <div class="image-caption">La decisión más difícil: autonomía personal o protección institucional</div>
+            </div>
+
+            <div class="card">
+                <h2>¿Qué Países Permiten la Eutanasia?</h2>
+                <div class="stat-box">
+                    <div class="stat" style="border-color: rgba(0,200,100,0.4);"><div class="stat-number" style="color: #00c853;">✓</div><div class="stat-label">Bélgica (2002)</div></div>
+                    <div class="stat" style="border-color: rgba(0,200,100,0.4);"><div class="stat-number" style="color: #00c853;">✓</div><div class="stat-label">Países Bajos</div></div>
+                    <div class="stat" style="border-color: rgba(0,200,100,0.4);"><div class="stat-number" style="color: #00c853;">✓</div><div class="stat-label">España (2021)</div></div>
+                    <div class="stat" style="border-color: rgba(0,200,100,0.4);"><div class="stat-number" style="color: #00c853;">✓</div><div class="stat-label">Canadá</div></div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>La Pregunta Que Nos Define</h2>
+                <div class="quote">"Morir es natural. Pero morir bien, con autonomía y sin dolor, sigue siendo un lujo que la mayoría no puede acceder. La eutanasia no es matar -es dar a cada quien el derecho a elegir cómo escribe su propio final."</div>
+                <p style="margin-top:25px">El debate trasciende la medicina para convertirse en una pregunta sobre qué significa ser humano: <span class="highlight">¿somos propietarios de nuestros cuerpos hasta el último latido?</span></p>
+            </div>
+            
+            <div class="sources">
+                <h4>📚 FUENTES:</h4>
+                <p>• Infobae - "Sí o no a la eutanasia en México" (2026)</p>
+                <p>• EL PAÍS - Debate sobre eutanasia en Chile</p>
+                <p>• Universidad de Barcelona - Sergio Ramos Pozón (investigación)</p>
+                <p>• BBC - Casos de eutanasia en Europa</p>
+                <p>• CNN - Ley "Trasciende" México</p>
+                <p>• UNAM - Argumenos a favor y en contra</p>
+            </div>
+
+            <footer class="footer"><p class="footer-text">DEBATE ABIERTO • CADA VIDA IMPORTA</p></footer>
+        </div>
+        <div class="scroll-indicator" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"></div>
+    </section>
+
+    <script>
+        // Cargar anuncios de Google AdSense
+        (adsbygoogle = window.adsbygoogle || []).push({});
+
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+            
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active-ozempic', 'active-ai', 'active-eutanasia');
+            });
+            
+            const activeBtn = document.querySelector(`[onclick="showSection('${sectionId}')"]`);
+            activeBtn.classList.add(`active-${sectionId}`);
+            
+            const logo = document.getElementById('logoText');
+            const themes = {
+                ozempic: { text: 'FUTURISMO', class: 'logo-ozempic' },
+                ai: { text: 'SISTEMA_IA', class: 'logo-ai' },
+                eutanasia: { text: 'ETERNUM', class: 'logo-eutanasia' }
+            };
+            logo.textContent = themes[sectionId].text;
+            logo.className = 'logo ' + themes[sectionId].class;
+            
+            window.scrollTo({top: 0, behavior: 'smooth'});
+            
+            // Recargar anuncios al cambiar de sección
+            setTimeout(() => { (adsbygoogle = window.adsbygoogle || []).push({}); }, 100);
+        }
+    </script>
+</body>
+</html>
